@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ u_plant.plant.name }}</title>
+</head>
+<body>
+    <h1>Podlewanie</h1>
+    <p>{{ u_plant.plant.name }}</p>
+    <p>{{ u_plant.location }}</p>
+    <p>Ostatnie podlewanie: {{ u_plant.last_watering }}</p>
+    <form method="post">
+        {{ form.as_p }}
+        {% csrf_token %}
+        <button type="submit">Zapisz</button>
+    </form>
+</body>
+</html>

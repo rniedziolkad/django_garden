@@ -12,7 +12,8 @@
         <td>{{ u_plant.plant.name }}</td>
         <td>{{ u_plant.location }}</td>
         <td>{{ u_plant.last_watering }}</td>
-        <td>{{ u_plant.plant.watering_period }}</td>
+        <td>{{ u_plant.next_watering }}</td>
+        <td> <a href="{% url 'manage_plant' u_plant.pk %}">Zarzadzaj</a></td>
       </tr>
     {% endfor %}
   </table>
