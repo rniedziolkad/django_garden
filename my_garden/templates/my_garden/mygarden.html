@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Moje rośliny</title>
+</head>
+<body>
+  <h1>Rosliny</h1>
+  <table>
+    {% for u_plant in my_plants %}
+      <tr>
+        <td>{{ u_plant.plant.name }}</td>
+        <td>{{ u_plant.location }}</td>
+        <td>{{ u_plant.last_watering }}</td>
+        <td>{{ u_plant.plant.watering_period }}</td>
+      </tr>
+    {% endfor %}
+  </table>
+  <a href = "{% url 'add_plant' %}">Dodaj do kolekcji</a>
+</body>
+</html>
