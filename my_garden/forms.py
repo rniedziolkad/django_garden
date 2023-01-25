@@ -12,14 +12,22 @@ class UserPlantForm(forms.ModelForm):
     class Meta:
         model = UserPlant
         fields = ['plant', 'location']
+        labels = {
+            'plant': "Roślina",
+            'location': "Lokalizacja",
+        }
 
 
 class ManagePlantForm(forms.ModelForm):
     class Meta:
         model = UserPlant
-        fields = ['next_watering']
+        fields = ['location', 'next_watering']
         widgets = {
             'next_watering': DateTimeInput(attrs={"type": "datetime-local"})
+        }
+        labels = {
+            'location': "Lokalizacja",
+            'next_watering': "Data następnego podlewania",
         }
 
 

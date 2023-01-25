@@ -2,6 +2,7 @@ import datetime
 
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils.timezone import now
 
 
 class Plant(models.Model):
@@ -26,6 +27,11 @@ class UserPlant(models.Model):
     last_watering = models.DateTimeField(null=True, blank=True)
     location = models.TextField(default="", blank=True)
     next_watering = models.DateTimeField(null=True, blank=True)
+
+    def needs_watering(self):
+        if self.next_watering:
+            return self.next_watering < now()
+        return True
 
     def __str__(self):
         return str(self.user)+" -> "+str(self.plant)

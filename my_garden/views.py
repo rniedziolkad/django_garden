@@ -3,11 +3,22 @@ from .models import UserPlant, Plant
 from django.contrib.auth.decorators import login_required
 from .forms import UserPlantForm, ManagePlantForm, PlantForm
 from django.core.exceptions import PermissionDenied
+from django.utils.timezone import now
 
 
 @login_required()
 def index(request):
-    my_plants = UserPlant.objects.filter(user=request.user)
+    if request.method == "POST":
+        pk = request.POST.get('pk', None)
+        print("Changing "+pk)
+        if pk:
+            u_plant = UserPlant.objects.get(pk=pk)
+            if u_plant.user == request.user:
+                u_plant.last_watering = now()
+                u_plant.next_watering = now() + u_plant.plant.watering_period
+                u_plant.save()
+
+    my_plants = UserPlant.objects.filter(user=request.user).order_by('next_watering')
     return render(request, template_name='my_garden/mygarden.html', context={'my_plants': my_plants})
 
 

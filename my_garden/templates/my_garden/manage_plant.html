@@ -7,12 +7,13 @@
 <body>
     <h1>Podlewanie</h1>
     <p>{{ u_plant.plant.name }}</p>
-    <p>{{ u_plant.location }}</p>
     <p>Ostatnie podlewanie: {{ u_plant.last_watering }}</p>
     <form method="post">
         {{ form.as_p }}
         {% csrf_token %}
         <button type="submit">Zapisz</button>
+        <button type="reset">Wyczyść zmiany</button>
+        <p><a href="{% url 'index' %}">< Powrót</a></p>
     </form>
 </body>
 </html>
