@@ -10,6 +10,7 @@
       {{ form.as_p }}
       {% csrf_token %}
       <button type="submit">Dodaj</button>
+      <p><a href="{% url 'index' %}">< Powrót</a></p>
   </form>
 </body>
 </html>
