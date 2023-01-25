@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <title>Moje rośliny</title>
+    <link rel="stylesheet" href="{% static 'my_garden/style.css' %}">
+</head>
+<body>
+  <div class="plant-list">
+    <h1>Moja kolekcja</h1>
+    <p><a href = "{% url 'add_plant' %}">Dodaj do kolekcji</a></p>
+    {% for u_plant in my_plants %}
+    <div class="plant-card">
+      <div class="card-content">
+        <div class="card-main-content">
+          <div class="div-plant-image">
+
+          </div>
+          <div class="div-plant-details">
+            <div class="div-plant-name">
+              {{ u_plant.plant.name }}
+            </div>
+            <div class="div-plant-location">
+              <p><b><i>Lokalizacja:</i></b></p>
+              <p>{{ u_plant.location }}</p>
+            </div>
+          </div>
+          <div class="div-plant-management">
+            <p><b><i> Następne podlewanie: </i></b></p>
+            <p>
+              {% if u_plant.next_watering != None %}
+              {{ u_plant.next_watering }}
+              {% else %}
+              Nie ustalono
+              {% endif %}
+            </p>
+            <p><a href="{% url 'manage_plant' u_plant.pk %}">Zarządzaj</a></p>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="div-footer-main">
+            <p><b><i>Ostatnie podlewanie:</i></b>
+            {% if u_plant.last_watering %}
+            {{ u_plant.last_watering }}
+            {% else %}
+            Nigdy
+            {% endif %}
+          </p>
+          </div>
+          <div class="div-footer-watering">
+            {% if u_plant.needs_watering %}
+            <form method="POST">
+              {% csrf_token %}
+              <button class="btn-watering" type="submit">Podlej</button>
+              <input name="pk" type="hidden" value="{{ u_plant.pk }}"/>
+            </form>
+            {% else %}
+            <button class="p-watering">Nawodnione</button>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</body>
+</html>

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dodaj roślinę do kolekcji</title>
+</head>
+<body>
+  <h1>Dodawanie rośliny</h1>
+  <form method="post">
+      {{ form.as_p }}
+      {% csrf_token %}
+      <button type="submit">Dodaj</button>
+      <p><a href="{% url 'index' %}">< Powrót</a></p>
+  </form>
+</body>
+</html>

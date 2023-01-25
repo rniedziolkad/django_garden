@@ -1,0 +1,116 @@
+body {
+    padding: 0;
+    margin: 0;
+}
+
+.plant-card {
+    width: 100%;
+}
+
+.card-content {
+    margin: 8px 24px;
+    width: 800px;
+    height: 250px;
+    border: 2px #000000 solid;
+}
+
+.card-main-content {
+    height: 200px;
+    display: flex;
+}
+
+.div-plant-image {
+    min-width: 200px;
+    max-width: 200px;
+    height: 100%;
+    float: left;
+    border-right: solid 2px;
+}
+
+.div-plant-details {
+    height: 100%;
+    width: 100%;
+    float: left;
+    box-sizing: border-box;
+}
+
+.div-plant-management {
+    height: 100%;
+    min-width: 120px;
+    max-width: 120px;
+    float: left;
+    box-sizing: border-box;
+    border-left: solid 2px;
+    padding: 8px;
+}
+
+.plant-list {
+    width: 800px;
+}
+
+.div-plant-name {
+    height: 50px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 8px;
+    box-sizing: border-box;
+    border-bottom: solid 2px;
+}
+
+.div-plant-location {
+    height: 200px;
+    box-sizing: border-box;
+    padding: 8px;
+}
+
+.card-footer {
+    height: 50px;
+    border-top: solid 2px;
+    box-sizing: border-box;
+    display: flex;
+}
+
+.div-footer-main {
+    float:left;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.div-footer-watering {
+    float:left;
+    min-width: 120px;
+    max-width: 120px;
+    box-sizing: border-box;
+    border-left: solid 2px;
+    position: relative;
+}
+
+.btn-watering {
+    position: absolute;
+    left: 4px;
+    right: 4px;
+    top: 4px;
+    bottom: 4px;
+    box-sizing: border-box;
+    background-color: #0099AA;
+    cursor: pointer;
+}
+
+.p-watering {
+    position: absolute;
+    left: 4px;
+    right: 4px;
+    top: 4px;
+    bottom: 4px;
+    box-sizing: border-box;
+    background-color: #00AA55;
+    text-align: center;
+    border: none;
+}
+
+.plant-list > h1, .plant-list > p {
+    text-align: center;
+}
+
+

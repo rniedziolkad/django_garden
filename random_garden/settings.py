@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'my_garden.apps.MyGardenConfig',
+    'account.apps.AccountConfig',
 ]
 
 MIDDLEWARE = [
@@ -47,6 +49,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
 ]
 
 ROOT_URLCONF = 'random_garden.urls'
@@ -69,6 +72,9 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'random_garden.wsgi.application'
 
+LOGIN_URL = '/account/login/'
+LOGIN_REDIRECT_URL = '/my_garden/'
+LOGOUT_REDIRECT_URL = '/account/login/'
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases

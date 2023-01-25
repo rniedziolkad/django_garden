@@ -1,0 +1,34 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Spis roślin</title>
+</head>
+<body>
+  <h1>Spis roślin</h1>
+  <table>
+    {% for plant in plants %}
+    <tr>
+      <td>{{ plant.name }}</td>
+      <td>{{ plant.watering_level }}</td>
+      <td>{{ plant.watering_period }}</td>
+      <td>Added by: {{ plant.added_by }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+  <h1>Rośliny zdefiniowane przez użytkownika</h1>
+  <table>
+    {% for plant in user_plants %}
+    <tr>
+      <td>{{ plant.name }}</td>
+      <td>{{ plant.watering_level }}</td>
+      <td>{{ plant.watering_period }}</td>
+      <td>Added by: {{ plant.added_by }}</td>
+      <td><a href="{% url 'edit_plant' plant.pk %}">Edytuj</a></td>
+    </tr>
+    {% endfor %}
+  </table>
+  <a href="{% url 'add_plant_list' %}">Dodaj do spisu</a>
+</body>
+</html>
