@@ -57,3 +57,17 @@ def add_plant_list(request):
 
     form = PlantForm()
     return render(request, template_name='my_garden/add_plant_list.html', context={'form': form})
+
+
+@login_required()
+def edit_plant(request, pk):
+    plant = get_object_or_404(Plant, pk=pk)
+    if plant.added_by != request.user:
+        raise PermissionDenied()
+    if request.method == 'POST':
+        form = PlantForm(request.POST, instance=plant)
+        if form.is_valid():
+            form.save()
+    else:
+        form = PlantForm(instance=plant)
+    return render(request, template_name='my_garden/edit_plant_list.html', context={'form': form, 'plant': plant})

@@ -12,18 +12,19 @@
       <td>{{ plant.name }}</td>
       <td>{{ plant.watering_level }}</td>
       <td>{{ plant.watering_period }}</td>
-      <td>Added by: {{ plant.user }}</td>
+      <td>Added by: {{ plant.added_by }}</td>
     </tr>
     {% endfor %}
   </table>
-  <h1>Spis roślin użytkownika</h1>
+  <h1>Rośliny zdefiniowane przez użytkownika</h1>
   <table>
     {% for plant in user_plants %}
     <tr>
       <td>{{ plant.name }}</td>
       <td>{{ plant.watering_level }}</td>
       <td>{{ plant.watering_period }}</td>
-      <td>Added by: {{ plant.user }}</td>
+      <td>Added by: {{ plant.added_by }}</td>
+      <td><a href="{% url 'edit_plant' plant.pk %}">Edytuj</a></td>
     </tr>
     {% endfor %}
   </table>
