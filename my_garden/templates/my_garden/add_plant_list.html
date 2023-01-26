@@ -1,15 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {% load static %}
     <meta charset="UTF-8">
-    <title>Dodawanie rośliny do spisu</title>
+    <title>Definiowanie nowej rośliny</title>
+    <link rel="stylesheet" href="{% static 'my_garden/style.css' %}">
 </head>
 <body>
-    <h1>Dodawanie rośliny do spisu</h1>
     <form method="post">
-        {{ form.as_p }}
         {% csrf_token %}
-        <button type="submit">Dodaj</button>
+        <table class="form-table">
+            <thead><th colspan="2"><h1>Definiowanie nowej rośliny</h1></th></thead>
+            {{ form.as_table }}
+            <tr>
+                <td><a href="{% url 'plant_list' %}">< Katalog roślin</a></td>
+                <td><button type="submit">Dodaj</button></td>
+            </tr>
+        </table>
     </form>
+
+
+
+        {% csrf_token %}
+
+
 </body>
 </html>

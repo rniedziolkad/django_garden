@@ -115,8 +115,21 @@ body {
 
 .form-table {
     text-align: center;
+    border-spacing: 0;
 }
 
+.form-table > thead {
+    background-color: black;
+}
+.form-table > thead > tr > th{
+    color: white;
+}
+.form-table > tbody > tr {
+    height: 30px;
+}
+.form-table > tbody > tr:nth-child(odd) {
+    background-color: #DDD;
+}
 .form-table > tbody > tr > th:first-of-type
  {
     width: 160px;
@@ -128,7 +141,6 @@ body {
 }
 .plant-list-table > thead {
     background-color: black;
-    text-color: white;
 }
 
 .plant-list-table > thead > tr > th {

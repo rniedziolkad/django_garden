@@ -1,3 +1,5 @@
+import datetime
+
 from django.shortcuts import render, HttpResponse, get_object_or_404
 from .models import UserPlant, Plant
 from django.contrib.auth.decorators import login_required
@@ -16,7 +18,7 @@ def index(request):
             u_plant = UserPlant.objects.get(pk=pk)
             if u_plant.user == request.user:
                 u_plant.last_watering = now()
-                u_plant.next_watering = now() + u_plant.plant.watering_period
+                u_plant.next_watering = (now()+u_plant.plant.watering_period).replace(second=0)
                 u_plant.save()
 
     my_plants = UserPlant.objects.filter(user=request.user).order_by('next_watering')
@@ -49,6 +51,7 @@ def manage_plant(request, pk):
         form = ManagePlantForm(request.POST, instance=u_plant)
         if form.is_valid():
             form.save()
+            return redirect('index')
     else:
         form = ManagePlantForm(instance=u_plant)
     return render(request, template_name='my_garden/manage_plant.html', context={'form': form, 'u_plant': u_plant})
@@ -70,6 +73,7 @@ def add_plant_list(request):
             plant = form.save(commit=False)
             plant.added_by = request.user
             plant.save()
+            return redirect('plant_list')
 
     form = PlantForm()
     return render(request, template_name='my_garden/add_plant_list.html', context={'form': form})
@@ -84,6 +88,7 @@ def edit_plant(request, pk):
         form = PlantForm(request.POST, instance=plant)
         if form.is_valid():
             form.save()
+            return redirect('plant_list')
     else:
         form = PlantForm(instance=plant)
     return render(request, template_name='my_garden/edit_plant_list.html', context={'form': form, 'plant': plant})

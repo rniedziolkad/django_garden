@@ -6,10 +6,10 @@ from django.utils.timezone import now
 
 
 class Plant(models.Model):
-    choices_list = (("low", "skąpe"),
-                    ("medium", "umiarkowane"),
-                    ("high", "obfite"),
-                    ("very_high", "bardzo obfite"))
+    choices_list = (("skąpe", "skąpe"),
+                    ("umiarkowane", "umiarkowane"),
+                    ("obfite", "obfite"),
+                    ("bardzo obfite", "bardzo obfite"))
 
     name = models.CharField(max_length=255)
     image_url = models.URLField(null=True, blank=True)
