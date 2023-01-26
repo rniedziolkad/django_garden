@@ -1,13 +1,7 @@
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    {% load static %}
-    <meta charset="UTF-8">
-    <title>Katalog roślin</title>
-    <link rel="stylesheet" href="{% static 'my_garden/style.css' %}">
-</head>
-<body>
+{% extends "my_garden/base.html" %}
+{% block title %}Katalog roślin{% endblock %}
+{% block main-content %}
+<div>
   <div class="div-title"><h1>Katalog roślin</h1></div>
   <table class="plant-list-table">
     <thead><th>Nazwa</th><th>Podlewanie</th><th>Okres podlewania</th><th></th></thead>
@@ -33,9 +27,9 @@
       <td>{{ plant.watering_level }}</td>
       <td>{{ plant.watering_period }}</td>
       <td><a href="{% url 'edit_plant' plant.pk %}">Edytuj</a></td>
-      <td><a href="{% url 'add_plant' %}">Dodaj do kolekcji</a></td>
+      <td><a href="{% url 'add_plant' %}?plant_id={{ plant.pk }}">Dodaj do kolekcji</a></td>
     </tr>
     {% endfor %}
   </table>
-</body>
-</html>
+  </div>
+{% endblock %}

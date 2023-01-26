@@ -8,7 +8,7 @@ body {
 }
 
 .card-content {
-    margin: 8px 24px;
+    margin: 8px 0px;
     width: 800px;
     height: 250px;
     border: 2px #000000 solid;
@@ -116,6 +116,7 @@ body {
 .form-table {
     text-align: center;
     border-spacing: 0;
+    margin: 8px 0;
 }
 
 .form-table > thead {
@@ -164,4 +165,42 @@ body {
 .div-title {
     width: 800px;
     text-align: center;
+}
+
+#header {
+    width:100%;
+    height: 80px;
+    background-color: black;
+    display: flex;
+}
+
+#username {
+    min-width: 200px;
+    max-width: 240px;
+    height: 100%;
+    color: #0099AA;
+    font-size: 24px;
+    box-sizing: border-box;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+}
+
+#buttons {
+    width: 100%;
+    height: 100%;
+    min-width: 600px;
+}
+
+.header-button{
+    height:100%;
+    float:right;
+    width: 120px;
+    background-color: #0099AA;
+    cursor: pointer;
+}
+
+#base-content {
+    display: flex;
+    justify-content: center;
 }

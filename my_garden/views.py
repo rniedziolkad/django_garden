@@ -38,7 +38,12 @@ def add_plant(request):
     form = UserPlantForm(request.user)
     plant_id = request.GET.get('plant_id')
     if plant_id:
-        form.fields['plant'].initial = plant_id
+        try:
+            plant = Plant.objects.get(pk=plant_id)
+        except Plant.DoesNotExist:
+            plant = None
+        if plant and plant.added_by == request.user:
+            form.fields['plant'].initial = plant_id
     return render(request, template_name='my_garden/add_plant.html', context={'form': form})
 
 

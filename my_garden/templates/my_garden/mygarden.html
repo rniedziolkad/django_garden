@@ -1,12 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    {% load static %}
-    <meta charset="UTF-8">
-    <title>Moje rośliny</title>
-    <link rel="stylesheet" href="{% static 'my_garden/style.css' %}">
-</head>
-<body>
+{% extends "my_garden/base.html" %}
+{% block title %}Moje rośliny{% endblock %}
+
+{% block main-content %}
   <div class="plant-list">
     <h1>Moja kolekcja</h1>
     <p><a href = "{% url 'add_plant' %}">Dodaj do kolekcji</a></p>
@@ -65,5 +60,4 @@
     </div>
     {% endfor %}
   </div>
-</body>
-</html>
+{% endblock %}
