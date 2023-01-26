@@ -20,6 +20,7 @@ def index(request):
                 u_plant.last_watering = now()
                 u_plant.next_watering = (now()+u_plant.plant.watering_period).replace(second=0)
                 u_plant.save()
+            return redirect('index')
 
     my_plants = UserPlant.objects.filter(user=request.user).order_by('next_watering')
     return render(request, template_name='my_garden/mygarden.html', context={'my_plants': my_plants})
@@ -42,7 +43,7 @@ def add_plant(request):
             plant = Plant.objects.get(pk=plant_id)
         except Plant.DoesNotExist:
             plant = None
-        if plant and plant.added_by == request.user:
+        if plant and (plant.added_by == request.user or plant.added_by is None):
             form.fields['plant'].initial = plant_id
     return render(request, template_name='my_garden/add_plant.html', context={'form': form})
 

@@ -10,7 +10,12 @@
       <div class="card-content">
         <div class="card-main-content">
           <div class="div-plant-image">
-
+            {% if u_plant.plant.image_url %}
+            <img src="{{ u_plant.plant.image_url }}" width="100%" height="100%">
+            {% else %}
+            {% load static %}
+            <img src="{% static 'my_garden/plant.png' %}" width="100%" height="100%">
+            {% endif %}
           </div>
           <div class="div-plant-details">
             <div class="div-plant-name">

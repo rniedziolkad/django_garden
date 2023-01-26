@@ -73,7 +73,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'random_garden.wsgi.application'
 
 LOGIN_URL = '/account/login/'
-LOGIN_REDIRECT_URL = '/my_garden/'
+LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/account/login/'
 
 # Database

@@ -39,5 +39,5 @@ class PlantForm(forms.ModelForm):
             'name': "Nazwa",
             'watering_level': "Podlewanie",
             'watering_period': "Okres podlewania",
-            'image_url': 'URL obrazka',
+            'image_url': 'Link do obrazka',
         }
