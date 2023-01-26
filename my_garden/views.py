@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required
 from .forms import UserPlantForm, ManagePlantForm, PlantForm
 from django.core.exceptions import PermissionDenied
 from django.utils.timezone import now
+from django.shortcuts import redirect
 
 
 @login_required()
@@ -30,8 +31,12 @@ def add_plant(request):
             u_plant = form.save(commit=False)
             u_plant.user = request.user
             u_plant.save()
+            return redirect('index')
 
     form = UserPlantForm(request.user)
+    plant_id = request.GET.get('plant_id')
+    if plant_id:
+        form.fields['plant'].initial = plant_id
     return render(request, template_name='my_garden/add_plant.html', context={'form': form})
 
 

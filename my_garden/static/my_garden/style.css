@@ -113,4 +113,43 @@ body {
     text-align: center;
 }
 
+.form-table {
+    text-align: center;
+}
 
+.form-table > tbody > tr > th:first-of-type
+ {
+    width: 160px;
+    text-align: right;
+}
+.plant-list-table {
+    border-spacing: 0;
+    width: 800px;
+}
+.plant-list-table > thead {
+    background-color: black;
+    text-color: white;
+}
+
+.plant-list-table > thead > tr > th {
+    color: white;
+    width: 160px;
+    text-transform: uppercase;
+    height: 40px;
+}
+
+.plant-list-table > tbody {
+    text-align: center;
+}
+.plant-list-table > tbody > tr {
+    text-align: center;
+    height: 30px;
+}
+.plant-list-table > tbody > tr:nth-child(odd) {
+    background-color: #DDD;
+}
+
+.div-title {
+    width: 800px;
+    text-align: center;
+}

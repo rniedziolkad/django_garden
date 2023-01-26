@@ -1,19 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {% load static %}
     <meta charset="UTF-8">
     <title>{{ u_plant.plant.name }}</title>
+    <link rel="stylesheet" href="{% static 'my_garden/style.css' %}">
 </head>
 <body>
-    <h1>Podlewanie</h1>
-    <p>{{ u_plant.plant.name }}</p>
-    <p>Ostatnie podlewanie: {{ u_plant.last_watering }}</p>
     <form method="post">
-        {{ form.as_p }}
         {% csrf_token %}
-        <button type="submit">Zapisz</button>
-        <button type="reset">Wyczyść zmiany</button>
-        <p><a href="{% url 'index' %}">< Powrót</a></p>
+        <table class="form-table">
+            <tr><td colspan="2"><h1>Podlewanie</h1></td></tr>
+            <tr><td colspan="2"><h4>{{ u_plant.plant.name }}</h4></td></tr>
+            <tr><th>Ostatnie podlewanie:</th><td>{{ u_plant.last_watering }}</td></tr>
+            {{ form.as_table }}
+            <tr>
+                <td><a href="{% url 'index' %}">< Powrót</a></td>
+                <td><button type="reset">Wyczyść zmiany</button></td>
+            </tr>
+            <tr><td></td><td><button type="submit">Zapisz</button></td></tr>
+        </table>
     </form>
 </body>
 </html>
