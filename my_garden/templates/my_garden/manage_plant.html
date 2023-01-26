@@ -1,19 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>{{ u_plant.plant.name }}</title>
-</head>
-<body>
-    <h1>Podlewanie</h1>
-    <p>{{ u_plant.plant.name }}</p>
-    <p>Ostatnie podlewanie: {{ u_plant.last_watering }}</p>
+{% extends "my_garden/base.html" %}
+{% block title %}{{ u_plant.plant.name }}{% endblock %}
+{% block main-content %}
     <form method="post">
-        {{ form.as_p }}
         {% csrf_token %}
-        <button type="submit">Zapisz</button>
-        <button type="reset">Wyczyść zmiany</button>
-        <p><a href="{% url 'index' %}">< Powrót</a></p>
+        <table class="form-table">
+            <thead><th colspan="2"><h1>Podlewanie</h1></th></thead>
+            <thead><th colspan="2"><h4>{{ u_plant.plant.name }}</h4></th></thead>
+            <tr><th>Ostatnie podlewanie:</th><td>{{ u_plant.last_watering|date:'d.m.Y H:i' }}</td></tr>
+            {{ form.as_table }}
+            <tr>
+                <td><a href="{% url 'index' %}">< Moja kolekcja</a></td>
+                <td><button type="reset">Wyczyść zmiany</button></td>
+            </tr>
+            <tr><td></td><td><button type="submit">Zapisz</button></td></tr>
+        </table>
     </form>
-</body>
-</html>
+{% endblock %}

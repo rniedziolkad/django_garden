@@ -1,16 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Dodaj roślinę do kolekcji</title>
-</head>
-<body>
-  <h1>Dodawanie rośliny</h1>
+{% extends "my_garden/base.html" %}
+{% block title %}Dodaj roślinę do kolekcji{% endblock %}
+{% block main-content %}
   <form method="post">
-      {{ form.as_p }}
       {% csrf_token %}
-      <button type="submit">Dodaj</button>
-      <p><a href="{% url 'index' %}">< Powrót</a></p>
+      <table class="form-table">
+          <thead><th colspan="2"><h1>Dodaj roślinę</h1></th></thead>
+          <tr><th></th><th><a href="{% url 'plant_list' %}">Przeglądaj katalog roślin</a></th></tr>
+          {{ form.as_table }}
+          <tr>
+              <td><a href="{% url 'index' %}">< Moja kolekcja</a></td>
+              <td><button type="submit">Dodaj do kolekcji</button></td>
+          </tr>
+      </table>
   </form>
-</body>
-</html>
+{% endblock %}

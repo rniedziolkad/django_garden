@@ -1,16 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {% load static %}
     <meta charset="UTF-8">
-    <title>Login</title>
+    <title>Logowanie</title>
+    <link rel="stylesheet" href="{% static 'my_garden/style.css' %}">
 </head>
 <body>
-    <h1>Login Page</h1>
-    <form method="post">
-        {{ form.as_p }}
+    <div id="base-content">
+        <form method="post">
         {% csrf_token %}
-        <button type="submit">Zaloguj</button>
-    </form>
+        <table class="form-table">
+            <thead><th colspan="2"><h1>Logowanie</h1></th></thead>
+            {{ form.as_table }}
+            <tr><td colspan="2"><button type="submit">Zaloguj</button></td></tr>
+            <tr><td colspan="2"><a href="{% url 'register' %}">Rejestracja</a></td></tr>
+        </table>
+        </form>
+    </div>
+
+
 
 </body>
 </html>

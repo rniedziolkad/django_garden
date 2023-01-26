@@ -35,3 +35,9 @@ class PlantForm(forms.ModelForm):
     class Meta:
         model = Plant
         fields = ['name', 'watering_level', 'watering_period', 'image_url']
+        labels = {
+            'name': "Nazwa",
+            'watering_level': "Podlewanie",
+            'watering_period': "Okres podlewania",
+            'image_url': 'Link do obrazka',
+        }
