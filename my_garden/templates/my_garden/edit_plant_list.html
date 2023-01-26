@@ -1,0 +1,16 @@
+{% extends "my_garden/base.html" %}
+{% block title %}{{ plant.name }}{% endblock %}
+{% block main-content %}
+  <form method="post">
+      {% csrf_token %}
+      <table class="form-table">
+          <thead><th colspan="2"><h1>Edycja danych rośliny</h1></th></thead>
+          {{ form.as_table }}
+          <tr>
+              <td><a href="{% url 'plant_list' %}">< Katalog roślin</a></td>
+              <td><button type="reset">Wyczyść zmiany</button></td>
+          </tr>
+            <tr><td></td><td><button type="submit">Zapisz</button></td></tr>
+      </table>
+  </form>
+{% endblock %}

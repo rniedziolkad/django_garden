@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% load static %}
+  <meta charset="UTF-8">
+  <title>{% block title %}Random Garden{% endblock %}</title>
+  <link rel="stylesheet" href="{% static 'my_garden/style.css' %}">
+</head>
+<body>
+  <div id="header">
+    <div id="username">
+      {{ request.user }}
+    </div>
+    <div id="buttons">
+      <a href="{% url 'logout' %}"><button class="header-button">Wyloguj</button></a>
+      <a href="{% url 'plant_list' %}"><button class="header-button">Katalog roślin</button></a>
+      <a href="{% url 'index' %}"><button class="header-button">Moja kolekcja</button></a>
+    </div>
+  </div>
+  <div id="base-content">
+    {% block main-content %}
+    {% endblock %}
+  </div>
+</body>
+</html>
